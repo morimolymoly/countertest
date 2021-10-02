@@ -18,7 +18,7 @@ describe('counterr', () => {
 
   it("test pda", async () => {
     const seed = Buffer.from([1, 2, 3, 4]);
-    const domain = "my-domain";
+    const domain = provider.wallet.publicKey.toString().substring(0, 10);
     const foo = anchor.web3.SYSVAR_RENT_PUBKEY;
     const [myPda, nonce] = await publicKey.findProgramAddressSync(
       [
@@ -38,6 +38,8 @@ describe('counterr', () => {
         systemProgram: anchor.web3.SystemProgram.programId,
       },  
     })
+
+    console.log(myPda)
 
     await program.rpc.testPdaInc(new anchor.BN(111), {
       accounts: {

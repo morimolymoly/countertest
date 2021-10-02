@@ -2,7 +2,7 @@ use anchor_lang::{prelude::*, solana_program::system_program};
 use anchor_spl::token::{self, SetAuthority, Token, TokenAccount, Transfer, MintTo, mint_to, Mint};
 
 
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+declare_id!("AuKBLAeS5MSzXL8KDNiSzu4ddaAGNVVGmuFtLvJ5Cwoz");
 
 #[program]
 pub mod countertest {
