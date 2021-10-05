@@ -1,13 +1,6 @@
 const anchor = require('@project-serum/anchor');
 const { publicKey } = require('@project-serum/anchor/dist/cjs/utils');
 const { assert } = require('chai');
-const {
-  TOKEN_PROGRAM_ID,
-  getTokenAccount,
-  createMint,
-  createTokenAccount,
-  mintToAccount,
-} = require('./utils')
 
 describe('counterr', () => {
 
