@@ -24,6 +24,8 @@ pub mod countertest {
     }
 }
 
+// https://docs.rs/anchor-derive-accounts/0.17.0/anchor_derive_accounts/derive.Accounts.html
+// https://docs.rs/anchor-attribute-account/0.17.0/anchor_attribute_account/index.html
 #[derive(Accounts)]
 #[instruction(domain: String, seed: Vec<u8>, bump: u8)]
 pub struct TestPdaInit<'info> {
