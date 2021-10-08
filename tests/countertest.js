@@ -1,13 +1,7 @@
 const anchor = require('@project-serum/anchor');
 const { publicKey } = require('@project-serum/anchor/dist/cjs/utils');
 const { assert } = require('chai');
-const {
-  TOKEN_PROGRAM_ID,
-  getTokenAccount,
-  createMint,
-  createTokenAccount,
-  mintToAccount,
-} = require('./utils')
+const { Transaction } = require('@solana/web3.js');
 
 describe('counterr', () => {
 
@@ -29,6 +23,7 @@ describe('counterr', () => {
       ],
       program.programId
     );
+    
     await program.rpc.testPdaInit(domain, seed, nonce, {
       accounts: {
         myPda,
@@ -38,6 +33,22 @@ describe('counterr', () => {
         systemProgram: anchor.web3.SystemProgram.programId,
       },  
     })
+
+    console.log("insts" + program.instruction)
+
+    const tx = new Transaction();
+    tx.add(program.instruction.testPdaInit(domain, seed, nonce, {
+      accounts: {
+        myPda,
+        myPayer: program.provider.wallet.publicKey,
+        foo,
+        rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+        systemProgram: anchor.web3.SystemProgram.programId,
+      },  
+    }));
+    console.log(tx);
+
+    
 
     console.log(myPda)
 
